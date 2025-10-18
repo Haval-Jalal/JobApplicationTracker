@@ -11,7 +11,7 @@ namespace JobApplicationTracker
     public enum Status
     {
         Applied,
-        Interviewing,
+        Interview,
         Offer,
         Rejected
     }
