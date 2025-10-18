@@ -81,6 +81,33 @@ namespace JobApplicationTracker
                 Console.WriteLine(app.GetSummary());
                 Console.WriteLine($"{app.GetDaysSinceApplied()} days have passed since application.");
             }
+
+            foreach (var job in Application)
+            {
+                Console.WriteLine($"Company: {job.CompanyName}");
+                Console.Write("Status: ");
+
+                switch (job.Status)
+                {
+                    case Status.Applied:
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        break;
+                    case Status.Interview:
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        break;
+                    case Status.Offer:
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        break;
+                    case Status.Rejected:
+                        Console.ForegroundColor = ConsoleColor.DarkRed;
+                        break;
+                }
+
+                Console.WriteLine(job.Status);
+                Console.ResetColor();
+                Console.WriteLine($"Response Date: {job.ResponseDate?.ToString("yyyy-MM-dd") ?? "N/A"}");
+                Console.WriteLine("-----------------------------------");
+            }
         }
 
 
